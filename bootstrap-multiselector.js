@@ -14,12 +14,13 @@
 			var checkbox = $(this).find('input[type=checkbox]').first();
 			if (checkbox.length) {
 				e.stopPropagation();
-				e.preventDefault();
+				
 				checkbox.prop('checked', !checkbox[0].checked);
 			} else {
 				$element.find('input[type=checkbox]').prop('checked', false);
 			}
 			$element.multiselector('update');
+			e.preventDefault();
 		});
 	};
 
