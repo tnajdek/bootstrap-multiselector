@@ -75,7 +75,7 @@
 	$.fn.multiselector.Constructor = MultiSelector;
 
 	$(function () {
-		$('body').on('focus.multiselector.data-api', '[data-provide="multiselector"]', function (e) {
+		$('body').on('mousedown.multiselector.data-api', '[data-provide="multiselector"] .dropdown-menu>li', function (e) {
 			var $selector = $(e.target);
 			if (!$selector.hasClass('multi-selector')) {
 				$selector = $selector.closest('.multi-selector');
