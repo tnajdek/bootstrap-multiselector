@@ -14,7 +14,6 @@
 			var checkbox = $(this).find('input[type=checkbox]').first();
 			if (checkbox.length) {
 				e.stopPropagation();
-				
 				checkbox.prop('checked', !checkbox[0].checked);
 			} else {
 				$element.find('input[type=checkbox]').prop('checked', false);
@@ -27,16 +26,21 @@
 	MultiSelector.prototype = {
 		constructor: MultiSelector,
 
-		update: function () {
+		updateSilently: function() {
+			this.update({silent: true});
+		},
+
+		update: function (options) {
 			var $el = this.$element,
 				selected = $el.find('input[type=checkbox]:checked'),
 				defaultValue = $el.find('ul>li:first-child>a').text(),
 				$label = $($el.find('a > span:first-child')),
 				multipleText = $el.data('multipleText') || this.options.multipleText,
 				visibleItems = $el.data('visibleItems') || this.options.visibleItems,
-				separator = $el.data('separa;tor') || this.options.separator,
+				separator = $el.data('separator') || this.options.separator,
 				oldlabel = $label.text(),
 				newlabel;
+			options = options || {};
 			if (selected.length === 0) {
 				newlabel = defaultValue;
 			} else if (selected.length === 1) {
@@ -50,7 +54,9 @@
 			}
 			if( newlabel !== oldlabel) {
 				$label.text(newlabel);
-				$el.trigger('change');
+				if(!options.silent) {
+					$el.trigger('change');
+				}
 			}
 		}
 	};
@@ -68,6 +74,9 @@
 			}
 			if (option === 'update') {
 				data.update();
+			}
+			if (option === 'updateSilently') {
+				data.updateSilently();
 			}
 		});
 	};
