@@ -3,7 +3,8 @@ bootstrap-multiselector
 
 Bootstrap-multiselector is a Little widget for Twitter's Bootstrap to enable nice mechanism of grouping check boxes under single drop-down box and a customizable label.
 
-Live demo: http://multiselector.doppnet.com/demo/
+** No longer supported, you probably want something like [chosen](https://harvesthq.github.io/chosen/) instead **
+
 
 Installation & usage
 ---------------------
